@@ -1,6 +1,7 @@
 package coding.test.programmers;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 
 public class CodingTest {
@@ -43,9 +44,34 @@ public class CodingTest {
     sum = sum * sum;
     int multiply = Arrays.stream(input).reduce(1, (a, b) -> a * b);
 
-
     System.out.println(multiply < sum ? 1 : 0);
 
   }
 
+  // 문자 지우기
+  @Test
+  void removeString() {
+    try {
+      String myString = "apporoograpemmemprs";
+      int[] indices = {1, 16, 6, 15, 0, 10, 11, 3};
+
+      // 지워지지않는 인덱스를 구함...
+      int[] notRemovedIndex = IntStream.range(0, myString.length()).filter((i) -> {
+        for (int a : indices) {
+          if (i == Integer.valueOf(a))
+            return false;
+        }
+        return true;
+      }).sorted().toArray();
+
+      StringBuffer sb = new StringBuffer();
+      for (int i : notRemovedIndex) {
+        sb.append(myString.charAt(i));
+      }
+
+      System.out.println(sb.toString());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }
