@@ -74,4 +74,48 @@ public class CodingTest {
       e.printStackTrace();
     }
   }
+
+  @Test
+  void listSlice() {
+    int[] answer = {};
+    int n = 4;
+    int[] slicer = {1, 5, 2};
+    int[] num_list = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+
+    switch (n) {
+      case 1:
+        answer = new int[slicer[1]];
+        for (int i = 0; i < slicer[1]; i++) {
+          answer[i] = num_list[i];
+        }
+        break;
+      case 2:
+        answer = new int[num_list.length - slicer[0]];
+        for (int j = 0, i = slicer[0]; i < num_list.length; j++, i++) {
+          answer[j] = num_list[i];
+        }
+        break;
+      case 3:
+        answer = new int[num_list.length - (slicer[0] + slicer[1]) + 2];
+        for (int j = 0, i = slicer[0]; i <= slicer[1]; j++, i++) {
+          answer[j] = num_list[i];
+        }
+        break;
+      case 4:
+        answer = new int[num_list.length - (slicer[0] + slicer[1]) + 2];
+        for (int j = 0, i = slicer[0]; i <= slicer[1]; j++, i++) {
+          answer[j] = num_list[i];
+        }
+        break;
+      default:
+        break;
+    }
+    System.out.println("answer");
+    for (int i : answer) {
+      System.out.print(i + "|");
+    }
+    System.out.println();
+  }
+
 }
