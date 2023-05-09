@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * 문자열 배열 strArr이 주어집니다. strArr의 원소들을 길이가 같은 문자열들끼리 그룹으로 묶었을 때 가장 개수가 많은 그룹의 크기를 return 하는 solution
@@ -25,4 +26,21 @@ public class GroupingString {
 
     return frequencyMap.get(top).intValue();
   }
+
+  public static void main(String[] args) {
+    int i = 1;
+    int j = 13;
+    int k = 1;
+    int zz = (int) IntStream.range(i, j + 1).map((z) -> {
+      int count = 0;
+      for (String s : String.valueOf(z).split("")) {
+        count += s.contains(String.valueOf(k)) ? 1 : 0;
+      }
+      return count;
+    }).sum();
+
+    System.out.println(zz);
+
+  }
+
 }
